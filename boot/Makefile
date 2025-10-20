@@ -8,7 +8,7 @@ TARGET = $(BUILD)/boot.img
 all: $(TARGET)
 
 $(TARGET): $(SRC) | $(BUILD)
-	$(ASM) $(ASMFLAGS) $< -o $@
+	$(ASM) $(ASMFLAGS) -o $< $@
 	@echo "Built $(TARGET)"
 
 $(BUILD):
