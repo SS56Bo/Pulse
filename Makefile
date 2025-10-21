@@ -17,9 +17,11 @@ $(OUT): $(SRC) | $(BIN_DIR)
 #create binary directory if it doesn't exist
 $(BIN_DIR):
 	mkdir -p $(BIN_DIR)
+	@echo "$(BIN_DIR) build complete!"
 
 #clean all build files
 clean:
 	rm -f $(OUT)
+	@echo "Build file cleaned!"
 
 .PHONY: all clean
