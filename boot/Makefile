@@ -3,7 +3,7 @@ ASMFLAGS = -f bin
 
 SRC = src/bootloader.asm
 BUILD = build
-TARGET = $(BUILD)/boot.img
+TARGET = $(BUILD)/boot.bin
 
 .PHONY: all clean
 

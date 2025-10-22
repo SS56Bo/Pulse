@@ -1,21 +1,23 @@
 ;; This is a bootloader
 
 [bits 16]        ;; 
-[org 0x07C00]    ;; tells the assembler that your code will be loaded at memory address 0x07C00
-
-%define ENDL 0x0D, 0x0A
+[org 0x07C00]    ;  tells the assembler that your code will be loaded at memory address 0x07C00
 
 start:
     jmp main
 
 main:
-    mov ax, 0    ; ax is a general purpose registers
+    ; zero outing the general purpose registers
+    mov ax, 0    
+    mov bx, ax
+    mov cx, ax
+    
     mov ds, ax   ; ds is a segment register
     mov es, ax   ; ds is a segment register
     
-    ;stack
+    ; stack
     mov ss, ax
-    mov sp, 0x07C00
+    mov sp, 0x07CFF
 
     ; print string
     mov si, msg_hello
@@ -45,12 +47,13 @@ puts:
     ret
 
 .halt:
-    jmp .halt   ;; jumps to the same .jmp over and over again
+    jmp .halt   ;  jumps to the same .jmp over and over again
 
-msg_hello: db 'Hello from the Kernel!', ENDL, 0
+msg_hello: 
+    db 'Hello from the Kernel!', 0
 
-times 510-($-$$) db 0   ;; ensures boot sector is exactly 512 bytes long
-                        ;; ($-$$) = number of bytes assembled so far
-                        ;; db 0 means "define byte 0"
+times 510-($-$$) db 0   ;  ensures boot sector is exactly 512 bytes long
+                        ;  ($-$$) = number of bytes assembled so far
+                        ;  db 0 means "define byte 0"
 
-dw 0xAA55       ;; boot signature -- two bytes = AA and 55
+dw 0xAA55       ;  boot signature -- two bytes = AA and 55
