@@ -20,3 +20,6 @@ $(BUILD):
 clean:
 	rm -rf $(BUILD)
 	@echo "Cleaned Build Directory"
+
+boot:
+	qemu-system-x86_64 -fda $(TARGET)
