@@ -1,7 +1,7 @@
 ASM = nasm
 ASMFLAGS = -f bin
 
-SRC = src/bootloader.asm
+SRC = src/boot16.asm
 BUILD = build
 TARGET = $(BUILD)/boot.bin
 
